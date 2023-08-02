@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign In - E-Voting System</title>
+	<style>
+		body {
+			background-color: #333;
+			color: #fff;
+			font-family: 'Open Sans', sans-serif;
+			text-align: center; /* Center all text */
+			margin: 10% auto; /* Center the body */
+			max-width: 600px; /* Set a maximum width for the content */
+		}
+		
+		.button {
+			display: block; /* Change display to block */
+			width: 50%; /* Set width to 100% */
+			padding: 24px 24px;
+			background-color: #555;
+			color: #fff;
+			border-radius: 4px;
+			text-decoration: none;
+			font-size: 18px;
+			margin: 25px auto;
+			transition: background-color 0.3s ease;
+			transition: margin 0.3s ease;
+		}
+		
+		.button:hover {
+			background-color: #777;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		input[type=text] {
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: none;
+			border-radius: 4px;
+			background-color: #555;
+			color: #fff;
+		}
+
+		input[type=submit] {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		.error_message{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			color: rgb(253, 253, 253);
+		}
+		input[type=submit]:hover {
+			background-color: #45a049;
+		}
+	</style>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+<body>
+	<h1>Sign In</h1>
+	<form action="#" method="POST">
+		<label for="voter_id">Voter ID:</label>
+		<input type="text" id="voter_id" name="voterid" required>
+		<input type="submit" value="Sign In" class="button">
+	</form>
+	{% if error_message %}
+		<p>{{error_message}}</p>
+	{% endif %}
+	<a href="/" class="button">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Dashboard</title>
+    <style>
+		body {
+			background-color: #f1f1f1;
+			color: #333;
+			font-family: 'Open Sans', sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		
+		h1 {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+			margin: 0;
+			text-align: center;
+		}
+		
+		h2 {
+			margin-top: 40px;
+			margin-bottom: 20px;
+			font-size: 24px;
+			font-weight: normal;
+		}
+		
+		table {
+			border-collapse: collapse;
+			margin: 0 auto;
+			max-width: 800px;
+			width: 100%;
+		}
+		
+		th, td {
+			padding: 10px 20px;
+			text-align: left;
+			border-bottom: 1px solid #ddd;
+		}
+		
+		th {
+			background-color: #555;
+			color: #fff;
+			font-weight: bold;
+		}
+		
+		form {
+			display: inline-block;
+			margin-right: 10px;
+		}
+		
+		input[type=submit] {
+			background-color: #555;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 16px;
+			transition: background-color 0.3s ease;
+		}
+		
+		input[type=submit]:hover {
+			background-color: #777;
+		}
+		
+		p {
+			margin: 10px 0;
+			font-size: 16px;
+			color: #777;
+		}
+	</style>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+<body>
+	<h1>Admin Dashboard</h1>
+	<p>Welcome, Admin!</p>
+	<h2>Candidates</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>ID</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for candidate in candidates %}
+			<tr>
+				<td>{{ candidate[0] }}</td>
+				<td>{{ candidate[1] }}</td>
+				<td>
+					<form action="/add_candidate" method="post">
+						<input type="hidden" name="name" value="{{ candidate[0] }}">
+						<input type="hidden" name="id" value="{{ candidate[1] }}">
+						<input type="submit" value="Add">
+					</form>
+					<form action="/remove_candidate" method="post">
+						<input type="hidden" name="name" value="{{ candidate[0] }}">
+						<input type="hidden" name="id" value="{{ candidate[1] }}">
+						<input type="submit" value="Remove">
+						{% if candidate[2] %}
+						<p>{{ candidate[2] }} people have voted for this candidate.</p>
+						{% endif %}
+					</form>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<h2>Votes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Voter Name</th>
+                <th>Candidate Voted</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for name, vote in votes %}
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ vote }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

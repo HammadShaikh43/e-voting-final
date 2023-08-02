@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Voting - E-Voting System</title>
+	<style>
+		body {
+			background-color: #333;
+			color: #fff;
+			font-family: 'Open Sans', sans-serif;
+			text-align: center; /* Center all text */
+			margin: 10% auto; /* Center the body */
+			max-width: 600px; /* Set a maximum width for the content */
+		}
+
+		h1 {
+			font-size: 36px;
+			margin-bottom: 50px;
+		}
+
+		.card {
+			background-color: #555;
+			border-radius: 4px;
+			padding: 20px;
+			margin-bottom: 30px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.card p {
+			margin: 0;
+			font-size: 20px;
+			line-height: 1.5;
+			margin-bottom: 15px;
+		}
+
+		.card h2 {
+			margin: 0;
+			font-size: 24px;
+			margin-bottom: 10px;
+		}
+
+		.button {
+			display: block; /* Change display to block */
+			width: 50%; /* Set width to 100% */
+			padding: 24px 24px;
+			background-color: #555;
+			color: #fff;
+			border-radius: 4px;
+			text-decoration: none;
+			font-size: 18px;
+			margin: 25px auto;
+			transition: background-color 0.3s ease;
+			transition: margin 0.3s ease;
+		}
+
+		.button:hover {
+			background-color: #777;
+		}
+	</style>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+<body>
+	<h1>Voting Page</h1>
+	<form method='POST' action="#">
+		<div class="card">
+			<h2>Name</h2>
+			<p>{{ name }}</p>
+			<h2>Batch Year</h2>
+			<p>{{ batch }}</p>
+			<h2>Habib ID</h2>
+			<p>{{ huid }}</p>
+			<h2>Candidate</h2>
+			<select name="selected_candidate">
+				{% for row in candidates %}
+					<option value="{{ row }}">{{ row }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		{% if error_message %}
+			<p>{{error_message}}</p>
+		{% endif %}
+		<button type="submit" class="button">Vote Now</button>
+	</form>
+</body>
+</html>

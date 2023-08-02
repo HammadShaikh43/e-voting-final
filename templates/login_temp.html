@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Login</title>
+	<style>
+		body {
+			background-color: #333;
+			color: #fff;
+			font-family: 'Open Sans', sans-serif;
+			text-align: center; /* Center all text */
+			margin: 10% auto; /* Center the body */
+			max-width: 600px; /* Set a maximum width for the content */
+        }
+		
+		.form-group {
+			display: block; /* Change display to block */
+			width: 50%; /* Set width to 100% */
+			margin: 25px auto;
+			text-align: left;
+		}
+		
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-size: 18px;
+		}
+		
+		input[type="password"] {
+			display: block;
+			width: 100%;
+			padding: 12px;
+			border-radius: 4px;
+			border: none;
+			background-color: #555;
+			color: #fff;
+			font-size: 18px;
+		}
+		
+		.button {
+			display: block; /* Change display to block */
+			width: 50%; /* Set width to 100% */
+			padding: 24px 24px;
+			background-color: #555;
+			color: #fff;
+			border-radius: 4px;
+			text-decoration: none;
+			font-size: 18px;
+			margin: 25px auto;
+			transition: background-color 0.3s ease;
+			transition: margin 0.3s ease;
+		}
+		
+		.button:hover {
+			background-color: #777;
+		}
+	</style>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+<body>
+	<div id="cursor"></div>
+	<h1>Admin Login</h1>
+	<form method="POST" class="form-group">
+		<label for="password">Password:</label>
+		<input type="password" name="password" id="password">
+		<button type="submit" class="button">Log In</button>
+	</form>
+	<a href="/" class="button">Back to Home</a>
+</body>
+</html>
